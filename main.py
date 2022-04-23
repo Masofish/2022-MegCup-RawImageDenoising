@@ -502,7 +502,7 @@ model.eval()
 
 print('training set 800 predicting ...')
 for i in tqdm.tqdm(range(len(samples_ref))):
-    # 输入 + 增强
+
     batch_inp_np = np.zeros((8, 1, 256, 256), dtype='float32')
     sample = np.float32(samples_ref[i, :, :]) * np.float32(1/65536)
     for k in range(len(aug_modes)):
@@ -510,10 +510,8 @@ for i in tqdm.tqdm(range(len(samples_ref))):
         batch_inp_np[k, 0, :, :] = argument(raw=sample, flip_h=mode[0], flip_w=mode[1], transpose=mode[2])
     batch_inp = mge.tensor(batch_inp_np)
 
-    # 预测
     pred = model(batch_inp).numpy()
-
-    # 输出 + 还原
+    
     batch_pred_np = np.zeros((1, 256, 256), dtype='float32')
     for k in range(len(aug_modes)):
         mode = aug_modes[k]
