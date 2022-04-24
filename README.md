@@ -1,6 +1,4 @@
-# 2022-MegCup-RawImageDenoising-Rank9
-
-- How to run?
+# 2022-MegCup-RawImageDenoising
 
 python main.py
 
